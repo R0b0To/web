@@ -1,10 +1,35 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>My GitHub Pages Site</title>
+    <title>Database Connection Test</title>
 </head>
 <body>
-  <h1>Welcome to my GitHub Pages site!</h1>
-  <p>This is a simple index page.</p>
+    <h1>Database Connection Test</h1>
+    <p>
+        <?php
+        // PHP code to attempt a database connection
+        $serverName = "YourServerName";
+        $connectionOptions = array(
+            "Database" => "YourDatabaseName",  
+            "Uid" => "YourUsername",          
+            "PWD" => "YourPassword"            
+        );
+
+        // Try to establish a connection
+        $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+        if ($conn === false) {
+            echo "Connection failed: " . sqlsrv_errors();
+        } else {
+            echo "Connected successfully!";
+            // You can perform additional database operations here if needed
+            // Don't forget to close the connection when done: sqlsrv_close($conn);
+        }
+        ?>
+    </p>
 </body>
 </html>
+
+
+
+
+
