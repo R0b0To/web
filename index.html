@@ -1,14 +1,28 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+    <title>Upstash Example</title>
 </head>
 <body>
-    <h1>Static page</h1>
+    <h1>Hello, <span id="userName">Guest</span>!</h1>
+    <button onclick="loadUserName()">Load User Name</button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        // Function to load the user name from Upstash
+        function loadUserName() {
+            // Make an API request to your server to get the user name
+            axios.get('/getUserName')
+                .then(response => {
+                    const userName = response.data.userName || 'Guest';
+                    document.getElementById('userName').textContent = userName;
+                })
+                .catch(error => {
+                    console.error('Error loading user name:', error);
+                });
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-
