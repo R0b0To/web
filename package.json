@@ -1,11 +1,15 @@
 {
-    "name": "your-project-name",
-    "version": "1.0.0",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-
-    }
+  "name": "web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "[r0b0to.github.io](https://r0b0to.github.io/web/)",
+  "main": "server.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "redis": "^4.6.9"
   }
-  
+}
