@@ -1,5 +1,5 @@
 // server.js
-
+console.log('starting service')
 const express = require('express');
 const redis = require('redis');
 const app = express();
