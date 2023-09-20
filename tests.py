@@ -9,3 +9,9 @@ r = redis.Redis(
 for key in r.keys('*'):
     value = r.get(key)
     print(f'Key: {key.decode("utf-8")}, Value: {value.decode("utf-8")}')
+
+def hello_world(request):
+  return {
+    "statusCode": 200,
+    "body": "Hello, world!",
+  }
