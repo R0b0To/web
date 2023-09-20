@@ -1,19 +1,17 @@
-import { Redis } from "@upstash/redis";
-import "isomorphic-fetch";
-
-const redis = Redis.fromEnv();
-
-export default async function handler(
-  _req,
-  res,
-) {
+const { Redis } = require("@upstash/redis");
+console.log("doing something")
+module.exports = async (req, res) => {
   /**
-   * We're prefixing the key for our automated tests.
-   * This is to avoid collisions with other tests.
+   * Redis.fromEnv() will read the following from environment variables:
+   * - UPSTASH_REDIS_REST_URL
+   * - UPSTASH_REDIS_REST_TOKEN
    */
-  const key = ["vercel", process.env.VERCEL_GIT_COMMIT_SHA || "local", "nodejs"]
-    .join("_");
-  await redis.set(key, `${Math.floor(Math.random() * 100)}_hello 😋`);
-  const value = await redis.get(key);
-  res.json({ key, value });
-}
+  console.log(res)
+  const redis = Redis.fromEnv();
+  await redis.set("test", "one");
+  const bar = await redis.get("foo");
+
+  res.json({
+    body: `foo: ${bar}`,
+  });
+};
