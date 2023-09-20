@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   console.log(res)
   const redis = Redis.fromEnv();
   await redis.set("test", "one");
-  const bar = await redis.get("test");
+  const bar = await redis.get("users");
 
   res.json({
     body: `my test value: ${bar}`,
