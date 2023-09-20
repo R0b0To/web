@@ -1,15 +1,15 @@
 {
-  "name": "web",
+  "name": "vercel-nodejs",
   "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "description": "[r0b0to.github.io](https://r0b0to.github.io/web/)",
-  "main": "server.js",
-  "author": "",
+  "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "redis": "^4.6.9"
+    "@upstash/redis": "latest",
+    "isomorphic-fetch": "^3.0.0"
   }
 }
