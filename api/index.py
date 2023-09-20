@@ -6,9 +6,7 @@ r = redis.Redis(
   password='f1be7ffc91294067b17ab82c6f707f89'
 )
 
-for key in r.keys('*'):
-    value = r.get(key)
-    print(f'Key: {key.decode("utf-8")}, Value: {value.decode("utf-8")}')
+
 
 
 from http.server import BaseHTTPRequestHandler
@@ -16,8 +14,11 @@ from http.server import BaseHTTPRequestHandler
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type','text/plain')
-        self.end_headers()
-        self.wfile.write('Hello, world!'.encode('utf-8'))
+        for key in r.keys('*'):
+          value = r.get(key)
+          print(f'Key: {key.decode("utf-8")}, Value: {value.decode("utf-8")}')
+          self.send_response(200)
+          self.send_header('Content-type','text/plain')
+          self.end_headers()
+          self.wfile.write(value.decode("utf-8").encode('utf-8'))
         return
