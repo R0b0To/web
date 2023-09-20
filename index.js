@@ -8,9 +8,29 @@ module.exports = async (req, res) => {
    */
   console.log(res)
   const redis = Redis.fromEnv();
-  const bar = await redis.get("test");
+  //const bar = await redis.get("test");
 
-  res.json({
-    body: `my test value: ${bar}`,
+
+  redis.keys('*', (err, keys) => {
+    if (err) {
+      console.error('Error:', err);
+      return;
+    }
+    keys.forEach((key) => {
+      redis.get(key, (error, value) => {
+        if (error) {
+          console.error(`Error fetching value for key ${key}:`, error);
+        } else {
+          console.log(`Key: ${key}, Value: ${value}`);
+        }
+      });
+    });
   });
+
+
+
+/*  res.json({
+    body: `my test value: ${bar}`,
+  });*/
 };
+
