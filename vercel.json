@@ -1,16 +1,3 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "./tests.py",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
-    ]
-  }
-  
+  "redirects": [{ "source": "/", "destination": "/api" }]
+}
